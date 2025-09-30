@@ -1,0 +1,65 @@
+═══════════════════════════════════════════════════
+   🔐 ADMIN PANEL ACCESS - CONFIDENTIAL 
+═══════════════════════════════════════════════════
+
+📍 Admin URL: http://localhost:8080/admin.php
+
+🔑 Default Password: admin123
+
+⚠️  IMPORTANT SECURITY NOTES:
+   • Change the password immediately in admin.php (line 9)
+   • Do NOT share this file or URL with students
+   • Admin link is hidden from public navigation
+   • Login attempts limited to 5 (15-minute lockout)
+   • Auto-logout after 2 hours of inactivity
+
+═══════════════════════════════════════════════════
+
+📋 HOW TO ACCESS:
+
+1. Type URL directly in browser:
+   http://localhost:8080/admin.php
+
+2. Enter password: admin123
+
+3. Click "دخول" (Login)
+
+═══════════════════════════════════════════════════
+
+🔒 TO CHANGE PASSWORD:
+
+1. Open: admin.php
+2. Find line 9: $admin_password = "admin123";
+3. Change to: $admin_password = "YourNewPassword123!";
+4. Save file
+5. Use new password to login
+
+═══════════════════════════════════════════════════
+
+⚡ QUICK TASKS:
+
+✓ Add Questions: Use "إضافة سؤال جديد" tab
+✓ View Questions: Use "إدارة الأسئلة" tab
+✓ Delete Questions: Click red "حذف" button
+✓ Upload Images: Use file upload in question form
+✓ Logout: Click "خروج" button in top-right
+
+═══════════════════════════════════════════════════
+
+🚫 TROUBLESHOOTING:
+
+Problem: "تم تجاوز عدد المحاولات المسموحة"
+Solution: Wait 15 minutes or clear browser cookies
+
+Problem: Session expired
+Solution: Login again (auto-logout after 2 hours)
+
+Problem: Can't upload images
+Solution: Create "uploads/" folder with write permissions
+
+═══════════════════════════════════════════════════
+
+⚠️  KEEP THIS FILE SECURE - DO NOT SHARE PUBLICLY
+
+═══════════════════════════════════════════════════
+

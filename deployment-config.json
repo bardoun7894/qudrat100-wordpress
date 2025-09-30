@@ -1,0 +1,55 @@
+{
+  "deployment": {
+    "environments": {
+      "production": {
+        "branch": "main",
+        "url": "https://qudrat100.com",
+        "deployment_method": "ftp_or_sftp"
+      },
+      "staging": {
+        "branch": "staging",
+        "url": "https://staging.qudrat100.com",
+        "deployment_method": "ftp_or_sftp"
+      }
+    },
+    "files_to_deploy": {
+      "custom_theme": "wp-content/themes/custom-theme/",
+      "custom_php_files": [
+        "admin.php",
+        "demo.php",
+        "quiz.php"
+      ],
+      "api_endpoints": "api/",
+      "includes": "includes/"
+    },
+    "excluded_files": [
+      "wp-config.php",
+      "wp-content/uploads/",
+      "wp-content/cache/",
+      ".git/",
+      ".github/",
+      "node_modules/",
+      "*.sql",
+      "*.log",
+      ".env"
+    ],
+    "database": {
+      "custom_tables": [
+        "wp_quiz_questions",
+        "wp_quiz_results",
+        "wp_course_registrations"
+      ],
+      "migration_required": true
+    },
+    "post_deployment_tasks": [
+      "Update wp-config.php with production credentials",
+      "Update includes/db_connection.php with production credentials",
+      "Change admin.php login credentials",
+      "Set WordPress static homepage",
+      "Flush WordPress permalinks",
+      "Test all forms and quiz functionality",
+      "Enable caching plugins if needed",
+      "Configure SSL certificate"
+    ]
+  }
+}

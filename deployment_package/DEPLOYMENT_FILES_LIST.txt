@@ -1,0 +1,103 @@
+================================================================
+FILES TO UPLOAD TO qudrat100.com
+================================================================
+
+📋 PRIORITY 1: Core Files (Required)
+================================
+✓ index.php                          → /public_html/
+✓ demo.php                           → /public_html/
+✓ quiz.php                           → /public_html/
+✓ admin.php                          → /public_html/
+
+📋 PRIORITY 2: Assets (Required)
+================================
+✓ assets/css/style.css               → /public_html/assets/css/
+✓ assets/images/iconword.png         → /public_html/assets/images/
+✓ assets/images/بروشور-دورة-القدرة-المعرفية-ج47.jpg → /public_html/assets/images/
+
+📋 PRIORITY 3: Includes (Required)
+================================
+✓ includes/header.php                → /public_html/includes/
+✓ includes/footer.php                → /public_html/includes/
+✓ includes/db_connection.php         → /public_html/includes/
+   ⚠️  UPDATE database credentials before uploading!
+
+📋 PRIORITY 4: API (Required)
+================================
+✓ api/get_questions.php              → /public_html/api/
+
+📋 PRIORITY 5: Database (Execute in phpMyAdmin)
+================================
+✓ database_setup.sql                 → Execute in phpMyAdmin
+
+📋 PRIORITY 6: Folders to Create
+================================
+✓ uploads/questions/                 → /public_html/uploads/questions/
+   ⚠️  Set permissions to 755 or 775
+
+
+================================================================
+DOCUMENTATION FILES (Keep locally, DO NOT upload)
+================================================================
+⊗ DEPLOYMENT_GUIDE.md               → Reference only
+⊗ DEPLOYMENT_FILES_LIST.txt         → Reference only
+⊗ QUICK_START_CHECKLIST.md          → Reference only
+⊗ NEXT_STEPS.md                     → Reference only
+⊗ ADMIN_ACCESS.txt                  → Reference only
+⊗ COLOR_SCHEME.md                   → Reference only
+⊗ database_setup.sql                → Execute, don't upload as file
+
+
+================================================================
+FILES TO UPDATE BEFORE UPLOADING
+================================================================
+
+1. includes/db_connection.php
+   - Update $username
+   - Update $password
+   - Update $dbname
+   - Keep $servername as "localhost" (or check with hosting)
+
+2. admin.php
+   - Change default admin password after first login
+
+
+================================================================
+QUICK UPLOAD CHECKLIST
+================================================================
+
+□ Step 1: Backup current site
+□ Step 2: Get FTP/cPanel credentials
+□ Step 3: Get database credentials from wp-config.php
+□ Step 4: Update includes/db_connection.php locally
+□ Step 5: Upload all files via FTP/FileZilla
+□ Step 6: Create uploads/questions/ folder
+□ Step 7: Set folder permissions (755)
+□ Step 8: Execute database_setup.sql in phpMyAdmin
+□ Step 9: Test https://qudrat100.com/
+□ Step 10: Test https://qudrat100.com/admin.php
+□ Step 11: Change admin password
+□ Step 12: Add quiz questions via admin panel
+
+
+================================================================
+ESTIMATED UPLOAD SIZE
+================================================================
+
+Total files: ~25 files + folders
+Total size: ~2-3 MB (approximate)
+Upload time: 2-5 minutes (depending on connection)
+
+
+================================================================
+SUPPORT CONTACTS
+================================================================
+
+If you need help:
+- cPanel: Contact your hosting provider
+- Database: Use phpMyAdmin in cPanel
+- FTP Issues: Check credentials with hosting support
+
+
+================================================================
+
