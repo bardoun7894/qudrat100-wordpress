@@ -1,4 +1,6 @@
 <?php
+require_once 'includes/wp-loader.php';
+
 $page_title = "الاختبار التجريبي - اختبر قدراتك المعرفية";
 $page_description = "اختبار تجريبي شامل لقياس القدرات المعرفية والاستعداد لاختبارات القدرات";
 $additional_css = ['assets/css/quiz.css'];

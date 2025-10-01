@@ -1,4 +1,6 @@
 <?php
+require_once 'includes/wp-loader.php';
+
 $page_title = "لوحة الإدارة - إدارة الأسئلة والصور";
 $page_description = "لوحة تحكم لإضافة وتعديل أسئلة الاختبارات والصور";
 $additional_css = ['assets/css/admin.css'];
