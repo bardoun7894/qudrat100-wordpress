@@ -50,13 +50,12 @@ if (isset($_POST['logout'])) {
 }
 
 // Database connection
-$conn = null;
 if (isset($_SESSION['admin_logged_in'])) {
-    $conn = include 'includes/db_connection.php';
+    include_once 'includes/db_connection.php';
 }
 
 // Handle question submission
-if (isset($_POST['add_question']) && isset($_SESSION['admin_logged_in']) && $conn) {
+if (isset($_POST['add_question']) && isset($_SESSION['admin_logged_in'])) {
     // Handle image upload
     $image_path = '';
     if (isset($_FILES['question_image']) && $_FILES['question_image']['error'] === UPLOAD_ERR_OK) {
@@ -75,82 +74,72 @@ if (isset($_POST['add_question']) && isset($_SESSION['admin_logged_in']) && $con
     }
     
     // Prepare SQL statement
-    $stmt = $conn->prepare("INSERT INTO quiz_questions (question_text, image_path, option_a, option_b, option_c, option_d, correct_answer, explanation, category, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    
-    $stmt->bind_param("ssssssssss", 
-        $_POST['question_text'],
-        $image_path,
-        $_POST['option_a'],
-        $_POST['option_b'],
-        $_POST['option_c'],
-        $_POST['option_d'],
-        $_POST['correct_answer'],
-        $_POST['explanation'],
-        $_POST['category'],
-        $_POST['difficulty']
+    $wpdb->insert(
+        'quiz_questions',
+        [
+            'question_text' => $_POST['question_text'],
+            'image_path' => $image_path,
+            'option_a' => $_POST['option_a'],
+            'option_b' => $_POST['option_b'],
+            'option_c' => $_POST['option_c'],
+            'option_d' => $_POST['option_d'],
+            'correct_answer' => $_POST['correct_answer'],
+            'explanation' => $_POST['explanation'],
+            'category' => $_POST['category'],
+            'difficulty' => $_POST['difficulty']
+        ]
     );
     
-    if ($stmt->execute()) {
+    if ($wpdb->insert_id) {
         $success_message = "تم إضافة السؤال بنجاح إلى قاعدة البيانات!";
     } else {
-        $error_message = "حدث خطأ في حفظ السؤال: " . $stmt->error;
+        $error_message = "حدث خطأ في حفظ السؤال: " . $wpdb->last_error;
     }
-    
-    $stmt->close();
 }
 
 // Handle question deletion
-if (isset($_POST['delete_question']) && isset($_SESSION['admin_logged_in']) && $conn) {
+if (isset($_POST['delete_question']) && isset($_SESSION['admin_logged_in'])) {
     $question_id = (int)$_POST['question_id'];
     
     // Get image path before deleting
-    $stmt = $conn->prepare("SELECT image_path FROM quiz_questions WHERE id = ?");
-    $stmt->bind_param("i", $question_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $image_path = $wpdb->get_var($wpdb->prepare("SELECT image_path FROM quiz_questions WHERE id = %d", $question_id));
     
-    if ($row = $result->fetch_assoc()) {
-        // Delete image file if exists
-        if (!empty($row['image_path']) && file_exists($row['image_path'])) {
-            unlink($row['image_path']);
-        }
+    // Delete image file if exists
+    if (!empty($image_path) && file_exists($image_path)) {
+        unlink($image_path);
     }
-    $stmt->close();
     
     // Delete question from database
-    $stmt = $conn->prepare("DELETE FROM quiz_questions WHERE id = ?");
-    $stmt->bind_param("i", $question_id);
+    $wpdb->delete('quiz_questions', ['id' => $question_id]);
     
-    if ($stmt->execute()) {
+    if ($wpdb->rows_affected) {
         $success_message = "تم حذف السؤال بنجاح!";
     } else {
-        $error_message = "حدث خطأ في حذف السؤال: " . $stmt->error;
+        $error_message = "حدث خطأ في حذف السؤال: " . $wpdb->last_error;
     }
-    
-    $stmt->close();
 }
 
 // Load existing questions for display
 $existing_questions = [];
-if (isset($_SESSION['admin_logged_in']) && $conn) {
-    $result = $conn->query("SELECT * FROM quiz_questions ORDER BY id DESC");
-    if ($result) {
-        while ($row = $result->fetch_assoc()) {
+if (isset($_SESSION['admin_logged_in'])) {
+    $results = $wpdb->get_results("SELECT * FROM quiz_questions ORDER BY id DESC");
+    if ($results) {
+        foreach ($results as $row) {
             $existing_questions[] = [
-                'id' => $row['id'],
-                'question' => $row['question_text'],
-                'image' => $row['image_path'],
+                'id' => $row->id,
+                'question' => $row->question_text,
+                'image' => $row->image_path,
                 'options' => [
-                    $row['option_a'],
-                    $row['option_b'],
-                    $row['option_c'],
-                    $row['option_d']
+                    $row->option_a,
+                    $row->option_b,
+                    $row->option_c,
+                    $row->option_d
                 ],
-                'correct' => (int)$row['correct_answer'],
-                'explanation' => $row['explanation'],
-                'category' => $row['category'],
-                'difficulty' => $row['difficulty'],
-                'created_at' => $row['created_at']
+                'correct' => (int)$row->correct_answer,
+                'explanation' => $row->explanation,
+                'category' => $row->category,
+                'difficulty' => $row->difficulty,
+                'created_at' => $row->created_at
             ];
         }
     }
