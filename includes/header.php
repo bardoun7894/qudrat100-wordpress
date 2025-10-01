@@ -12,8 +12,9 @@
     
     <!-- Styles -->
     <?php
-    // Use WordPress functions to get the correct URL
-    $base_url = get_site_url();
+    // Auto-detect environment for proper paths
+    $is_local = (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !== false);
+    $base_url = $is_local ? 'http://localhost:8080/' : 'https://qudrat100.com/';
     ?>
     <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/style.css">
     <?php if(isset($additional_css)): ?>

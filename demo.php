@@ -1,6 +1,4 @@
 <?php
-require_once 'includes/wp-loader.php';
-
 $page_title = "الاستعداد للقدرات - دورة القدرة المعرفية";
 $page_description = "دورة شاملة للاستعداد لاختبار القدرات المعرفية مع أمثلة تطبيقية ونماذج اختبارات";
 $additional_css = [];
