@@ -47,3 +47,45 @@ The process of deployment involves:
 4.  **Domain Name System (DNS) configuration**: Pointing your domain name (e.g., `qudrat100.com`) to the IP address of your live server.
 
 In your case, the GitHub Actions workflow you have (`deploy.yml`) is designed to automate step 1 (uploading files) using FTP. When you push changes to the specified branches (`main` or `production`), GitHub Actions will automatically connect to your FTP server and upload the updated files, making them live.
+
+### 4. Dockerizing Your WordPress Application
+
+To ensure consistency and ease of deployment, this WordPress project can be run using Docker. Docker allows you to package your application and all its dependencies into a standardized unit called a "container."
+
+**Benefits of Dockerizing:**
+*   **Portability**: Your application will run the same way on any machine with Docker.
+*   **Isolation**: Each component (WordPress, database, web server) runs in its own container.
+*   **Scalability**: Easily scale your application by running multiple container instances.
+*   **Version Control**: Docker configurations can be version-controlled alongside your code.
+
+**How to use Docker for this project:**
+
+1.  **`Dockerfile`**: This file defines how to build the Docker image for your WordPress application. It includes the base PHP-FPM image, installs necessary dependencies, PHP extensions, sets the working directory, copies your WordPress files, exposes port 9000, and starts PHP-FPM.
+
+    To build the Docker image, navigate to the root of your project in the terminal and run:
+    ```bash
+    docker build -t wordpress-app .
+    ```
+
+2.  **`docker-compose.yml`**: This file orchestrates multiple Docker containers, defining how your WordPress application and MySQL database services are configured and linked.
+
+    To start your WordPress application and database using Docker Compose, navigate to the root of your project in the terminal and run:
+    ```bash
+    docker-compose up -d
+    ```
+    This command will:
+    *   Build the `wordpress` service using the `Dockerfile` in the current directory.
+    *   Pull the `mysql:5.7` image for the `db` service.
+    *   Create a named volume `db_data` to persist your database.
+    *   Set up environment variables for both services, including database credentials.
+    *   Map port `8080` on your host to port `80` in the `wordpress` container, allowing you to access your WordPress site at `http://localhost:8080`.
+
+    To stop the services, run:
+    ```bash
+    docker-compose down
+    ```
+
+    To view the logs of your services, run:
+    ```bash
+    docker-compose logs -f
+    ```
