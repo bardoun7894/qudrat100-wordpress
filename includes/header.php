@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <?php
+    // Auto-detect environment for proper paths
+    $is_local = (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !== false);
+    $base_url = $is_local ? 'http://localhost:8080/' : 'https://qudrat100.com/';
+    ?>
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/style.css">
     <?php if(isset($additional_css)): ?>
         <?php foreach($additional_css as $css): ?>
             <link rel="stylesheet" href="<?php echo $css; ?>">
@@ -45,7 +50,7 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="assets/images/iconword.png" alt="شعار الاستعداد للقدرات" class="brand-icon">
+                        <img src="<?php echo $base_url; ?>assets/images/iconword.png" alt="شعار الاستعداد للقدرات" class="brand-icon">
                     </div>
                     <div class="logo-text">
                         <h1>الاستعداد للقدرات</h1>

@@ -348,3 +348,4 @@ Your WordPress theme is now ready for deployment. Follow the **ALLINONE_WP_MIGRA
 **Theme Version:** 2.0  
 **For:** qudrat100.com
 
+

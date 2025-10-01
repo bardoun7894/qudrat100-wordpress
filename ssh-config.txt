@@ -1,0 +1,5 @@
+Host hostinger
+    HostName 82.29.185.27
+    Port 65002
+    User u336527051
+    ServerAliveInterval 60

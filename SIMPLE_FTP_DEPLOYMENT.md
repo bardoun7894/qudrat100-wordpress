@@ -205,3 +205,4 @@ This method is simpler and avoids the plugin download issues.
 **Difficulty:** Easy  
 **Requirements:** FTP access or cPanel access
 
+

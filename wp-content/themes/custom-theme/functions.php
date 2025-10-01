@@ -27,18 +27,22 @@ add_action('after_setup_theme', 'custom_theme_setup');
 
 // Enqueue styles and scripts
 function custom_theme_scripts() {
-    // Enqueue theme stylesheet
-    wp_enqueue_style('custom-theme-style', get_stylesheet_uri(), array(), '2.0');
-    
+    // Enqueue Google Fonts for Arabic (load first)
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+
     // Enqueue Font Awesome
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-    
-    // Enqueue Google Fonts for Arabic
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
-    
+
+    // Enqueue main assets CSS (same styling used by standalone files)
+    // Use site_url for clean absolute path
+    wp_enqueue_style('main-assets-css', site_url('/assets/css/style.css'), array(), '2.0');
+
+    // Enqueue theme stylesheet (additional WordPress-specific styles)
+    wp_enqueue_style('custom-theme-style', get_stylesheet_uri(), array('main-assets-css'), '2.0');
+
     // Enqueue jQuery (if needed)
     wp_enqueue_script('jquery');
-    
+
     // Add custom JavaScript file
     if (file_exists(get_template_directory() . '/js/custom.js')) {
         wp_enqueue_script('custom-theme-script', get_template_directory_uri() . '/js/custom.js', array('jquery'), '2.0', true);

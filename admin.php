@@ -2,7 +2,6 @@
 $page_title = "لوحة الإدارة - إدارة الأسئلة والصور";
 $page_description = "لوحة تحكم لإضافة وتعديل أسئلة الاختبارات والصور";
 $additional_css = ['assets/css/admin.css'];
-$additional_js = ['assets/js/admin.js'];
 
 // Enhanced authentication with IP logging
 session_start();

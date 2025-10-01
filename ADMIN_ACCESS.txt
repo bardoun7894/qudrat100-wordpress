@@ -63,3 +63,4 @@ Solution: Create "uploads/" folder with write permissions
 
 ═══════════════════════════════════════════════════
 
+
