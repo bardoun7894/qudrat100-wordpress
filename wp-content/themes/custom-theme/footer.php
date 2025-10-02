@@ -1,3 +1,35 @@
+<!-- Social Media Section -->
+<section class="social-media-section">
+    <div class="container">
+        <div class="social-content">
+            <h2><i class="fas fa-share-alt"></i> تواصل معنا على وسائل التواصل الاجتماعي</h2>
+            <p>انضم إلى مجتمعنا واحصل على آخر التحديثات والنصائح</p>
+            <div class="social-buttons">
+                <a href="https://wa.me/966123456789" class="social-btn whatsapp-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب</span>
+                    <small>للاستفسارات السريعة</small>
+                </a>
+                <a href="https://t.me/qudrat100" class="social-btn telegram-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>تليجرام</span>
+                    <small>قناة النصائح والتحديثات</small>
+                </a>
+                <a href="https://twitter.com/qudrat100" class="social-btn twitter-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter"></i>
+                    <span>تويتر</span>
+                    <small>آخر الأخبار والإعلانات</small>
+                </a>
+                <a href="https://instagram.com/qudrat100" class="social-btn instagram-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                    <span>إنستجرام</span>
+                    <small>صور ومقاطع تحفيزية</small>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Footer -->
 <footer class="site-footer">
     <div class="container">
@@ -46,6 +78,11 @@
         </div>
     </div>
 </footer>
+
+<!-- Back to Top Button -->
+<div class="back-to-top" title="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+</div>
 
 <?php wp_footer(); ?>
 </body>

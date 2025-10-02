@@ -35,14 +35,17 @@
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <?php if (has_custom_logo()) : ?>
-                    <?php the_custom_logo(); ?>
-                <?php else : ?>
-                    <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/iconword.png" alt="<?php bloginfo('name'); ?>" class="logo-img">
-                        <span class="logo-text"><?php bloginfo('name'); ?></span>
-                    </a>
-                <?php endif; ?>
+                <div class="logo-icon">
+                    <?php if (has_custom_logo()) : ?>
+                        <?php the_custom_logo(); ?>
+                    <?php else : ?>
+                        <img src="<?php echo get_template_directory_uri(); ?>/../../../assets/images/iconword.png" alt="<?php bloginfo('name'); ?>" class="logo-img">
+                    <?php endif; ?>
+                </div>
+                <div class="logo-text">
+                    <h1><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
+                    <div class="tagline"><?php bloginfo('description'); ?></div>
+                </div>
             </div>
             <nav class="nav-menu">
                 <ul>
@@ -52,6 +55,19 @@
                     <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
                 </ul>
             </nav>
+            
+            <div class="header-cta">
+                <a href="<?php echo home_url('/demo.php'); ?>" class="btn btn-sm cta-button">
+                    <i class="fas fa-play"></i> ابدأ الآن
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
 </header>

@@ -28,11 +28,11 @@ body {
 
 /* Top Bar */
 .top-bar {
-    background: #2563EB;
+    background: #4F46E5;
     color: white;
     padding: 0.75rem 0;
     font-size: 0.875rem;
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
 }
 
 .top-bar-content {
@@ -165,8 +165,8 @@ body {
 }
 
 .nav-link:hover {
-    color: #2563EB;
-    background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%);
+    color: #4F46E5;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
     transform: translateY(-2px);
 }
 
@@ -178,7 +178,7 @@ body {
     transform: translateX(-50%) scaleX(0);
     width: 70%;
     height: 3px;
-    background: #2563EB;
+    background: #4F46E5;
     border-radius: 2px;
     transition: transform 0.3s ease;
 }
@@ -361,23 +361,23 @@ body {
 }
 
 .cta-button {
-    background: #2563EB;
+    background: #4F46E5;
     color: white;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
 }
 
 .cta-button:hover {
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.5);
+    box-shadow: 0 6px 25px rgba(79, 70, 229, 0.5);
 }
 
 .btn-primary {
-    background: #2563EB;
+    background: #4F46E5;
     color: white;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.5);
+    box-shadow: 0 6px 25px rgba(79, 70, 229, 0.5);
     transform: translateY(-3px);
 }
 
@@ -394,16 +394,16 @@ body {
 
 .btn-outline {
     background: transparent;
-    border: 2px solid #2563EB;
-    color: #2563EB;
+    border: 2px solid #4F46E5;
+    color: #4F46E5;
     box-shadow: none;
 }
 
 .btn-outline:hover {
-    background: #2563EB;
+    background: #4F46E5;
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
 }
 
 .btn-whatsapp {
@@ -847,7 +847,7 @@ body {
 
 .card-title {
     font-size: 1.875rem;
-    color: #2563EB;
+    color: #4F46E5;
     margin-bottom: 0.75rem;
     font-weight: 700;
 }
@@ -860,7 +860,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: #2563EB;
+    background: #4F46E5;
     color: white;
     padding: 120px 0;
     text-align: center;
@@ -991,7 +991,7 @@ body {
 
 .brochure-text h2 {
     font-size: 2.2rem;
-    color: #2563EB;
+    color: #4F46E5;
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
@@ -1018,7 +1018,7 @@ body {
 }
 
 .feature-item i {
-    color: #2563EB;
+    color: #4F46E5;
     font-size: 1.1rem;
     width: 20px;
 }
@@ -1071,7 +1071,7 @@ body {
 .section-header h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #2563EB;
+    color: #4F46E5;
     font-weight: 700;
 }
 
@@ -1108,13 +1108,13 @@ body {
 
 .pricing-card.featured {
     transform: scale(1.05);
-    border: 3px solid #2563EB;
-    box-shadow: 0 15px 50px rgba(37, 99, 235, 0.25);
+    border: 3px solid #4F46E5;
+    box-shadow: 0 15px 50px rgba(79, 70, 229, 0.25);
 }
 
 .pricing-card.featured:hover {
     transform: scale(1.05) translateY(-10px);
-    box-shadow: 0 25px 70px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 25px 70px rgba(79, 70, 229, 0.35);
 }
 
 .popular-badge {

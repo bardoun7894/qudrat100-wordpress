@@ -265,7 +265,7 @@ function show_registration_messages() {
         echo '</div>';
     }
     if (isset($_GET['newsletter']) && $_GET['newsletter'] == 'success') {
-        echo '<div class="notice notice-success" style="position: fixed; top: 50px; right: 20px; z-index: 9999; background: #2563EB; color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">';
+        echo '<div class="notice notice-success" style="position: fixed; top: 50px; right: 20px; z-index: 9999; background: #4F46E5; color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">';
         echo '<p><i class="fas fa-check-circle"></i> تم الاشتراك في النشرة البريدية بنجاح!</p>';
         echo '</div>';
     }

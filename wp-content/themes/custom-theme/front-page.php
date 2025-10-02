@@ -53,7 +53,7 @@ get_header(); ?>
                 <p>اكتشف محتوى البرنامج التدريبي الشامل للاستعداد للقدرات</p>
             </div>
             <div class="brochure-image">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/course-brochure.jpg" 
+                <img src="<?php echo get_template_directory_uri(); ?>/../../../assets/images/بروشور-دورة-القدرة-المعرفية-ج47.jpg" 
                      alt="بروشور دورة القدرة المعرفية" 
                      class="course-brochure">
             </div>

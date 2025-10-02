@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
         }
     });
     
-    // Add form validation (if forms are added later)
+    // Add form validation
     $('form').on('submit', function(e) {
         var isValid = true;
         
@@ -202,24 +202,7 @@ jQuery(document).ready(function($) {
         });
     }
     
-    // Example: Form validation
-    $('form').on('submit', function(e) {
-        let isValid = true;
-        
-        $(this).find('input[required], textarea[required]').each(function() {
-            if ($(this).val().trim() === '') {
-                isValid = false;
-                $(this).addClass('error');
-            } else {
-                $(this).removeClass('error');
-            }
-        });
-        
-        if (!isValid) {
-            e.preventDefault();
-            alert('Please fill in all required fields.');
-        }
-    });
+    // Form validation is handled above
     
     // Example: AJAX functionality
     $('.ajax-load-more').on('click', function(e) {
