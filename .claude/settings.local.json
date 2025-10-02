@@ -4,7 +4,19 @@
       "Bash(git init:*)",
       "Bash(git remote add:*)",
       "Bash(git config:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(docker-compose:*)",
+      "Bash(git -C C:/Users/Chairi/wordpress log --oneline --all -20)",
+      "Bash(docker exec:*)",
+      "Bash(docker restart:*)",
+      "Bash(docker inspect:*)",
+      "Bash(findstr:*)",
+      "Bash(docker logs:*)",
+      "Bash(wsl:*)",
+      "Bash(curl:*)",
+      "Bash(docker volume prune:*)",
+      "Bash(docker network prune:*)",
+      "Bash(docker system prune:*)"
     ],
     "deny": [],
     "ask": []
