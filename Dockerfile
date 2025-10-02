@@ -1,15 +1,18 @@
-FROM wordpress:latest
+# Production Dockerfile for WordPress on Ubuntu Server
+FROM wordpress:6.7.1-php8.2-apache
 
-# Copy the custom theme and plugins to the container
-COPY ./wp-content/themes/ /var/www/html/wp-content/themes/
-COPY ./wp-content/plugins/ /var/www/html/wp-content/plugins/
+# Install required PHP extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Copy the custom PHP files
-COPY ./demo.php /var/www/html/demo.php
-COPY ./quiz.php /var/www/html/quiz.php
-COPY ./admin.php /var/www/html/admin.php
-COPY ./api/ /var/www/html/api/
-COPY ./includes/ /var/www/html/includes/
+# Enable Apache modules
+RUN a2enmod rewrite
 
-# Set the permissions of the files
-RUN chown -R www-data:www-data /var/www/html/
+# Set working directory to /var/www/public_html
+WORKDIR /var/www/public_html
+
+# Configure Apache to use /var/www/public_html
+RUN sed -i 's|/var/www/html|/var/www/public_html|g' /etc/apache2/sites-available/000-default.conf && \
+    sed -i 's|/var/www/html|/var/www/public_html|g' /etc/apache2/apache2.conf
+
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www/public_html

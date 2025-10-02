@@ -1,36 +1,57 @@
-version: '3.8'
-
 services:
+  # MySQL Database
   db:
     image: mysql:5.7
-    volumes:
-      - db_data:/var/lib/mysql
+    container_name: wordpress_mysql
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: password
-    networks:
-      - wpsite
-
-  wordpress:
-    depends_on:
-      - db
-    build: .
-    ports:
-      - "8080:80"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-wordpress}
+      MYSQL_USER: ${MYSQL_USER:-wordpress}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-password}
     volumes:
-      - ./:/var/www/html
+      - wordpress_db:/var/lib/mysql
+    networks:
+      - wordpress_network
+
+  # WordPress Application
+  wordpress:
+    build: .
+    container_name: wordpress_app
+    restart: always
+    ports:
+      - "80:80"
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: password
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-wordpress}
+      WORDPRESS_DB_USER: ${MYSQL_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-password}
+    volumes:
+      # Mount files to /var/www/public_html
+      - ./:/var/www/public_html
+    depends_on:
+      - db
     networks:
-      - wpsite
+      - wordpress_network
 
-volumes:
-  db_data:
+  # phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: wordpress_phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+    depends_on:
+      - db
+    networks:
+      - wordpress_network
 
 networks:
-  wpsite:
+  wordpress_network:
+    driver: bridge
+
+volumes:
+  wordpress_db:
