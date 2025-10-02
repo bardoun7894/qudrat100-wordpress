@@ -117,7 +117,16 @@
 
     <?php if(isset($additional_js)): ?>
         <?php foreach($additional_js as $js): ?>
-            <script src="<?php echo $js; ?>"></script>
+            <?php 
+            // Handle both relative and absolute paths
+            if (strpos($js, 'http') === 0) {
+                echo '<script src="' . $js . '"></script>' . "\n";
+            } else {
+                // Remove 'assets/js/' prefix if present and use our function
+                $js_file = str_replace('assets/js/', '', $js);
+                include_js($js_file, '1.0', true);
+            }
+            ?>
         <?php endforeach; ?>
     <?php endif; ?>
 </body>

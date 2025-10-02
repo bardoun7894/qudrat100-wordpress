@@ -21,7 +21,9 @@
       "Bash(git -C C:/Users/Chairi/wordpress add .)",
       "Bash(git -C C:/Users/Chairi/wordpress rm -f \"C/Program Files/Git/home/wordpress/nul\")",
       "Bash(git -C C:/Users/Chairi/wordpress add Dockerfile docker-compose.yml wp-config.php DEPLOY.md database_setup.sql .env)",
-      "Bash(git -C C:/Users/Chairi/wordpress add Dockerfile docker-compose.yml DEPLOY.md .claude/settings.local.json)"
+      "Bash(git -C C:/Users/Chairi/wordpress add Dockerfile docker-compose.yml DEPLOY.md .claude/settings.local.json)",
+      "Bash(git -C C:/Users/Chairi/wordpress commit -m \"$(cat <<''EOF''\nProduction Docker setup for Ubuntu server deployment\n\n- Updated Dockerfile to use /var/www/public_html path\n- Created production-ready docker-compose.yml with MySQL 5.7\n- Updated wp-config.php for Docker production environment\n- Added DEPLOY.md with complete deployment guide\n- WordPress will run on port 80, phpMyAdmin on port 8080\n- All configurations tested and ready for Ubuntu server\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git -C C:/Users/Chairi/wordpress push origin feature/deploy-md-update)"
     ],
     "deny": [],
     "ask": []

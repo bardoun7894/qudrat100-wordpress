@@ -1,3 +1,7 @@
+<?php
+// Include configuration
+require_once __DIR__ . '/config.php';
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,10 +15,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <?php include_css('style.css', '1.0'); ?>
     <?php if(isset($additional_css)): ?>
         <?php foreach($additional_css as $css): ?>
-            <link rel="stylesheet" href="<?php echo $css; ?>">
+            <?php 
+            // Handle both relative and absolute paths
+            if (strpos($css, 'http') === 0) {
+                echo '<link rel="stylesheet" href="' . $css . '">' . "\n";
+            } else {
+                // Remove 'assets/css/' prefix if present and use our function
+                $css_file = str_replace('assets/css/', '', $css);
+                include_css($css_file, '1.0');
+            }
+            ?>
         <?php endforeach; ?>
     <?php endif; ?>
     
@@ -45,7 +58,7 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="assets/images/iconword.png" alt="شعار الاستعداد للقدرات" class="brand-icon">
+                        <img src="<?php echo get_image_url('iconword.png'); ?>" alt="شعار الاستعداد للقدرات" class="brand-icon">
                     </div>
                     <div class="logo-text">
                         <h1>الاستعداد للقدرات</h1>

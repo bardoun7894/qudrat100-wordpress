@@ -4,6 +4,9 @@ $page_description = "لوحة تحكم لإضافة وتعديل أسئلة ال
 $additional_css = ['assets/css/admin.css'];
 $additional_js = ['assets/js/admin.js'];
 
+// Include configuration
+require_once 'includes/config.php';
+
 // Enhanced authentication with IP logging
 session_start();
 $admin_password = "admin123"; // Change this to a secure password
@@ -61,16 +64,15 @@ if (isset($_POST['add_question']) && isset($_SESSION['admin_logged_in']) && $con
     // Handle image upload
     $image_path = '';
     if (isset($_FILES['question_image']) && $_FILES['question_image']['error'] === UPLOAD_ERR_OK) {
-        $upload_dir = 'uploads/';
-        if (!file_exists($upload_dir)) {
-            mkdir($upload_dir, 0777, true);
-        }
+        // Ensure uploads directory exists
+        ensure_uploads_directory();
         
         $file_extension = pathinfo($_FILES['question_image']['name'], PATHINFO_EXTENSION);
         $file_name = uniqid() . '.' . $file_extension;
-        $image_path = $upload_dir . $file_name;
+        $safe_upload_path = get_safe_upload_path($file_name);
+        $image_path = 'uploads/' . $file_name;
         
-        if (!move_uploaded_file($_FILES['question_image']['tmp_name'], $image_path)) {
+        if (!move_uploaded_file($_FILES['question_image']['tmp_name'], $safe_upload_path)) {
             $image_path = '';
         }
     }

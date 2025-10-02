@@ -95,3 +95,9 @@ wp-content/plugins/*/vendor/
 
 # Keep All-in-One Migration plugin
 !wp-content/plugins/all-in-one-wp-migration/
+
+# Exclude problematic system files and directories
+C:/
+C\*/
+nul
+Desktop/
