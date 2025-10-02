@@ -16,7 +16,12 @@
       "Bash(curl:*)",
       "Bash(docker volume prune:*)",
       "Bash(docker network prune:*)",
-      "Bash(docker system prune:*)"
+      "Bash(docker system prune:*)",
+      "Bash(git -C C:/Users/Chairi/wordpress status)",
+      "Bash(git -C C:/Users/Chairi/wordpress add .)",
+      "Bash(git -C C:/Users/Chairi/wordpress rm -f \"C/Program Files/Git/home/wordpress/nul\")",
+      "Bash(git -C C:/Users/Chairi/wordpress add Dockerfile docker-compose.yml wp-config.php DEPLOY.md database_setup.sql .env)",
+      "Bash(git -C C:/Users/Chairi/wordpress add Dockerfile docker-compose.yml DEPLOY.md .claude/settings.local.json)"
     ],
     "deny": [],
     "ask": []
